@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/Users/liuzhen/Desktop/coding/projects/DevSnippet log --oneline -5)",
+      "Bash(npm --version)",
+      "Bash(pip --version)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(where node:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(npm install:*)",
+      "Bash(cmd:*)",
+      "Read(//c/Program Files/**)",
+      "Bash(\"C:/Program Files/nodejs/npm.cmd\" --version)",
+      "Read(//c/msys64/ucrt64/bin/**)",
+      "Bash(npm ls:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:markdownlivepreview.com)",
+      "Bash(powershell:*)"
+    ]
+  }
+}
