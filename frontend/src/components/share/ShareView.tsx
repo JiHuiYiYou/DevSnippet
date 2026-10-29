@@ -25,7 +25,7 @@ export default function ShareView() {
   const [shareData, setShareData] = useState<ShareData | null>(null)
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
-  const [authenticated, setAuthenticated] = useState(false)
+  const [needsPassword, setNeedsPassword] = useState(false)
 
   const theme = useSettingsStore((s) => s.theme)
   const setTheme = useSettingsStore((s) => s.setTheme)
@@ -48,7 +48,8 @@ export default function ShareView() {
       if (!resp.ok) {
         if (resp.status === 401) {
           if (!pw) {
-            // Password required — caller will handle
+            // Password required — show the prompt
+            setNeedsPassword(true)
             setPasswordError('')
           } else {
             setPasswordError('Invalid password')
@@ -62,7 +63,7 @@ export default function ShareView() {
       }
       const data: ShareData = await resp.json()
       setShareData(data)
-      setAuthenticated(true)
+      setNeedsPassword(false)
       populateStores(data)
       setLoading(false)
     } catch (err) {
@@ -184,7 +185,7 @@ export default function ShareView() {
   }
 
   // Password prompt
-  if (shareData && !authenticated && shareData.password_protected) {
+  if (needsPassword) {
     return (
       <div className="h-screen flex flex-col items-center justify-center bg-surface dark:bg-surface-dark gap-3">
         <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">Password Protected</h2>

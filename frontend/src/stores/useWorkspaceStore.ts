@@ -49,7 +49,7 @@ interface WorkspaceStoreActions {
   removeFileTag: (fileId: string, tag: string) => void
 
   setActiveWorkspace: (id: string) => void
-  setActiveFolder: (id: string) => void
+  setActiveFolder: (id: string | null) => void
   setActiveFile: (id: string | null) => void
   toggleFolderExpanded: (id: string) => void
   expandParentsOf: (folderId: string) => void

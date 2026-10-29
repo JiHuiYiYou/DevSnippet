@@ -8,8 +8,8 @@ from ..config import BASE_URL
 
 router = APIRouter(prefix="/api", tags=["upload"])
 
-# Path to frontend/public/images relative to backend/
-UPLOAD_DIR = Path(__file__).resolve().parent.parent.parent.parent / "frontend" / "public" / "images"
+# Runtime upload directory, outside the frontend build output
+UPLOAD_DIR = Path(__file__).resolve().parent.parent.parent.parent / "data" / "images"
 ALLOWED_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".bmp", ".ico"}
 MAX_SIZE_MB = 10
 
