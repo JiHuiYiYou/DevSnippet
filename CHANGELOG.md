@@ -4,6 +4,7 @@
 
 | 日期 | 内容 |
 |------|------|
+| 2026-11-17 | 修复：Windows 上 `start.bat` 选到 MSYS2 版 Python 导致"创建虚拟环境失败" — 引导脚本改为按候选解释器自身的 `os.name` 与平台标签校验（不再看宿主的 `os.name`，跑在 MSYS2 Python 下时那道闸门会整个失效）、虚拟环境解释器改为按实际路径查找、`Path.home()` 指向 MSYS2 home 时用 `USERPROFILE` 兜底找 miniconda；`start.bat` 只挑原生 Windows Python（`py` 启动器 → miniconda/anaconda → PATH），并改为纯 ASCII、CRLF 行尾、去掉 `if` 块里的括号 |
 | 2026-10-29 | 新增：GitHub 相关完善 — MIT `LICENSE`、CI 工作流（前端 `npm ci && npm run build` + 后端依赖与导入检查）、Issue 模板（Bug / 功能建议）、README 徽章；变更记录从 README 移到独立的 `CHANGELOG.md` |
 | 2026-10-29 | 清理：上游参考项目 `markdown-live-preview`（tanabe/markdown-live-preview）改为不再入库，只作本地参考；`修改说明.txt`、`需求文档.md` 删除 |
 | 2026-10-29 | 修复：依赖装不上 — `bcrypt==4.1.3` 等旧钉版无 py3.12+ wheel 需 Rust 编译，改为版本区间；引导脚本自动跳过 MSYS2/MinGW 版 Python（平台标签 `mingw_*`，装不了预编译 wheel） |
